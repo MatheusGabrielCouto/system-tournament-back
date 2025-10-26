@@ -1,0 +1,80 @@
+# @baseUrl = https://financeiro-back.onrender.com
+@baseUrl = http://localhost:3333
+@authToken = {{authenticate.response.body.access_token}}
+
+@player1 = "cmh24ws20000025oof99fnwdf"
+
+@player2 = "cmh284812000025kyq3lyqncq"
+
+###
+# @name authenticate
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+	"email": "admin@admin.com",
+	"password": "Fazendeiro1!"
+}
+
+###
+
+# @name get_user_profile
+GET {{baseUrl}}/users/profile
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+###
+
+# @name create_account_player
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+	"email": "admin@admin.com",
+	"name": "Player 2",
+	"password": "Fazendeiro1!"
+}
+###
+
+# @name create_account_admin
+POST {{baseUrl}}/users/admin
+Content-Type: application/json
+
+{
+	"email": "admin@admin.com",
+	"name": "Matheus Gabriel",
+	"password": "Fazendeiro1!"
+}
+
+###
+
+#! Turnament
+# @name get_all
+GET  {{baseUrl}}/tournaments?filter=OPEN
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+###
+
+# @name create_tournament
+POST {{baseUrl}}/tournaments
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+	"title": "teste",
+	"status": "OPEN",
+	"startDate": "2025-10-22",
+	"slotsLimit": 20
+}
+###
+
+#! Enrollment
+# @name enrollment_user_to_tournament
+POST {{baseUrl}}/users/enrollment
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+	"tournamentId": "cmh293uak000125oargusoc30"
+}
+
+###

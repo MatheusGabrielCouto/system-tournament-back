@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Match" ALTER COLUMN "stage" SET DEFAULT 'GROUP';

@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "MatchStage" ADD VALUE 'QUARTER_FINAL';
