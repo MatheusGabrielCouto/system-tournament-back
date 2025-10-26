@@ -86,7 +86,7 @@ export class TournamentController {
     )
 
     const notEnrolledTournaments = tournaments.filter(t =>
-      !t.enrollments.some(e => (e.userId === user.sub)) && t.status === TournamentStatus.OPEN
+      !t.enrollments.some(e => (e.userId === user.sub))
     )
 
     const formatTournament = (t: any) => ({
